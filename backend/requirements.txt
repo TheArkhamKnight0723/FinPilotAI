@@ -1,8 +1,30 @@
-# Core Backend Dependencies (Placeholder - Do NOT install yet)
-# fastapi
-# uvicorn
-# pydantic
-# sqlalchemy
-# psycopg2-binary
-# python-dotenv
-# httpx
+# ─────────────────────────────────────────────────────────────
+# FinPilot AI – Backend Dependencies (Python 3.14+)
+# ─────────────────────────────────────────────────────────────
+
+# Web Framework
+fastapi==0.141.1
+uvicorn[standard]==0.52.0
+starlette==1.3.1
+
+# Data Validation & Settings Management
+pydantic==2.13.4
+pydantic-core==2.46.4
+pydantic-settings==2.14.2
+annotated-types==0.8.0
+
+# Environment Variables
+python-dotenv==1.2.2
+
+# HTTP Client (for external API calls)
+httpx==0.28.1
+httpcore==1.0.9
+
+# Utilities
+anyio==4.14.2
+typing-extensions==4.16.0
+python-json-logger==4.1.0
+
+# Dev / Testing
+pytest==9.1.1
+pytest-asyncio==1.4.0
