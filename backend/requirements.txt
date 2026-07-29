@@ -1,0 +1,8 @@
+# Core Backend Dependencies (Placeholder - Do NOT install yet)
+# fastapi
+# uvicorn
+# pydantic
+# sqlalchemy
+# psycopg2-binary
+# python-dotenv
+# httpx
