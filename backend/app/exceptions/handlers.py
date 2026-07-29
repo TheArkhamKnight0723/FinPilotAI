@@ -22,7 +22,7 @@ def register_exception_handlers(app: FastAPI) -> None:
     ) -> JSONResponse:
         logger.error(
             "Application error",
-            extra={"path": request.url.path, "message": exc.message},
+            extra={"path": request.url.path, "detail": exc.message},
         )
         return JSONResponse(
             status_code=exc.status_code,

@@ -1,6 +1,6 @@
 """
 FinPilot AI – Application Settings
-Uses pydantic-settings to load and validate environment variables.
+Uses pydantic-settings to load and validate environment variables from .env.
 """
 
 from functools import lru_cache
@@ -32,8 +32,16 @@ class Settings(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
 
-    # ── Security ──────────────────────────────────────────────
-    SECRET_KEY: str = "changeme-insecure-default"
+    # ── Database ──────────────────────────────────────────────
+    DATABASE_URL: str = "sqlite+aiosqlite:///./finpilot_dev.db"
+
+    # ── Security & JWT ────────────────────────────────────────
+    SECRET_KEY: str = "changeme-insecure-default-must-be-at-least-32-chars!!"
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 30
+
+    # ── CORS ──────────────────────────────────────────────────
     ALLOWED_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:5173",
@@ -45,6 +53,10 @@ class Settings(BaseSettings):
     @property
     def is_production(self) -> bool:
         return self.APP_ENV.lower() == "production"
+
+    @property
+    def is_sqlite(self) -> bool:
+        return "sqlite" in self.DATABASE_URL.lower()
 
 
 @lru_cache(maxsize=1)
