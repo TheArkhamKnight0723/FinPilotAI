@@ -23,6 +23,7 @@ if config.config_file_name is not None:
 # ── Import all models so Alembic detects them ─────────────────────────────────
 from app.database.base import Base          # noqa: E402
 import app.models.user                      # noqa: F401, E402  (registers User table)
+import app.models.portfolio                 # noqa: F401, E402  (registers Portfolio, Holding tables)
 
 target_metadata = Base.metadata
 

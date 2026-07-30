@@ -44,6 +44,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     from app.database.base import Base
     from app.database.session import engine
     import app.models.user  # noqa: F401 — ensure model is registered
+    import app.models.portfolio  # noqa: F401 — ensure portfolio models are registered
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
